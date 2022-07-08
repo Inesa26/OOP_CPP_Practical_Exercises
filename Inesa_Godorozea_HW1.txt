@@ -1,0 +1,88 @@
+#include <iomanip>
+    #include <iostream>
+  #include <cstring>
+  #include <cstdlib>   
+     #include <ctime>
+    using namespace std;
+
+
+class variable
+{public:
+	int var;
+		
+		void show()
+	{cout <<"variabila = "<<var<<endl;
+	}
+	
+	void insert()
+	{cout <<"introduceti variabila:";
+	cin>>var;
+	}
+	
+	int abc(variable a,variable b,variable c)
+	{cout<<"a+b-c ="<<a.var+b.var-c.var<<endl;
+		}	
+};
+
+
+int main()
+{
+variable a,b,c,R;
+a.insert();
+b.insert();
+c.insert();
+a.show();
+b.show();
+c.show();
+R.abc(a,b,c);
+
+
+	return 0;
+}
+
+
+____________________________________________________________________________________________
+#include <iomanip>
+    #include <iostream>
+  #include <cstdlib>   
+     #include <ctime>  
+    using namespace std;
+   
+   class var
+   {            
+        int value; 
+      public:
+         void setVALUE1()  
+         {
+          cout<<" Enter value = ";
+          cin>>value;
+          
+         }
+         void setVALUE2()  
+         {
+           value = rand()%100;
+          
+         }
+         void setVALUE3(int VALUE)  
+         {
+           value = VALUE;
+         
+         }
+     const int getVALUE()const{ return value; }
+   };
+    int main()
+    {
+   
+   var a,b,c;
+   a.setVALUE1();
+   cout<<" a="<<a.getVALUE()<<endl;
+   b.setVALUE1();
+   cout<<" b="<<b.getVALUE()<<endl;
+   c.setVALUE1();
+   cout<<" c="<<c.getVALUE()<<endl;
+   cout<<" a+b-c="<<a.getVALUE()+b.getVALUE()-c.getVALUE()<<endl;
+   var R;
+   R.setVALUE3(a.getVALUE()+b.getVALUE()-c.getVALUE());
+   cout<<" R="<<R.getVALUE()<<endl;
+    return 0;   
+    }

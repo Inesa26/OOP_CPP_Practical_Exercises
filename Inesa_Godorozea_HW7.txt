@@ -1,0 +1,244 @@
+#include <iomanip>
+    #include <iostream>
+  #include <cstring>
+  #include <cstdlib>   
+     #include <ctime>
+    using namespace std;
+    class variable
+{
+
+int var;
+
+public:
+	//Constructor
+	
+	variable (int var=NULL):var(var){}
+	variable(variable&Obj){this ->var=Obj.var;}
+	 
+	
+	
+	void setvar1(char *);
+	void setvar2();
+	void setvar3(int val);
+	
+	
+ int getvar(){return var;}
+
+void summ(int x){var+=x;}
+bool paritate(){return var%2==0?true:false;}
+bool interval(int x,int y){return var>=x&&var<=y?true:false;}
+	
+};
+void variable:: setvar1(char*message)
+	{cout<<message;
+	cin>>var;
+	}
+	
+	void variable:: setvar2()
+	{
+	var= rand()%100;
+	//cout<<var<<endl;
+	}
+		void variable:: setvar3(int val)
+	{this->var=val;
+	//cout<<var<<endl;
+	}
+	
+	class media
+	{
+	double medie;
+	
+	public:
+	//Constructor
+
+	media (double medie):medie(medie){}
+	media(media&Obj){this ->medie=Obj.medie;}
+	 
+	
+	void setmedie1(char *);
+	void setmedie3(double medie);
+	
+	
+     double getmedie(){return medie;}
+	};
+	void media:: setmedie1(char*message)
+	{cout<<message;
+	 cin>>medie;
+	}
+	
+	void media:: setmedie3(double medie)
+	{this->medie=medie;
+	
+	}	
+		
+	
+class sir{
+	char SIR[20];
+	
+
+public:
+	//Constructor
+	
+	sir (char SIR[]="\0"){strcpy(this->SIR,SIR);}
+	sir(sir&Obj){strcpy(this->SIR,Obj.SIR);}
+	 
+	
+	void setSIR1(char *);
+	void setSIR3(char *);
+	
+	
+     const char* getSIR()const{return this->SIR;}
+	};
+	
+	void sir:: setSIR1(char*message)
+	{cout<<message;
+	 cin>>SIR;
+	}
+	
+	void sir:: setSIR3(char SIR[])
+	{strcpy(this->SIR,SIR);
+	
+	}	
+	
+	
+class data
+{
+	int zi;
+	int luna;
+	int ani;
+	
+	public:
+	//Constructor
+	
+	
+	
+	data (int zi=NULL, int data=NULL, int ani=NULL):zi(zi), luna(luna), ani(ani){}
+	data(data&Obj)
+	{this ->zi=Obj.zi;
+	this ->luna=Obj.luna;
+	this ->ani=Obj.ani;}
+
+	
+	
+	void setdata1();
+	void setdata3(int val, int val1, int val2);
+
+	
+ int getzi(){return this->zi;}
+ int getluna(){return this-> luna;}
+	 int getani(){return this-> ani;}
+	};
+	void data:: setdata1() {
+		cout<<"Enter the date of birth ";
+		cin>>zi;
+		cout<<"Enter the month of birth ";
+		cin>>luna;
+		cout<<"Enter the year of birth ";
+		cin>>ani;
+	}
+	
+	void data::setdata3(int val, int val1, int val2)
+	{this->zi=zi;
+	this->luna=luna;
+	this ->ani=ani;
+	 } 
+
+	
+    class stud
+   {     
+        sir   name;
+ 		variable    age;
+ 		media medie;
+ 		data date;
+ 	 
+        
+      public:
+      	stud(int age):age(age),medie(NULL){
+      		this->name="\0";
+      	
+		  }
+		  
+		stud(variable&age):age(age),medie(NULL){
+      		this->name="\0";
+      		
+		  }
+
+          
+		  stud(double medie):age(NULL),medie(medie){
+      		this->name="\0";
+      	
+		  }
+		  
+		  stud(media&medie):age(NULL),medie(medie){
+      		this->name="\0";
+      	
+		  }
+      	
+      	stud(char name[]="\0", int age =NULL,double medie =NULL, int date=NULL)
+		  :age(age), medie(medie), name(name), date(date){	
+      	 }
+		  
+
+		  
+     void setName(char*);
+     void setAge(char*);
+	 void setMedie(char*);
+	 void setData();    
+     
+	 //steluta adresa primului element din sir  
+     const char* getName()const{ return this->name.getSIR(); }
+      int getAge(){ return this->age.getvar(); }
+      double getMedie(){ return this->medie.getmedie(); }
+ int getZi(){ return this->date.getzi();}
+ int getLuna(){ return this->date.getluna();}
+ int getAni(){ return this->date.getani();}     
+     
+    
+};
+     
+       
+         void  stud::setName(char *message)  
+         {
+           
+          this->name.setSIR1(message);
+         }
+         void stud::setAge(char *message) 
+         {
+          
+          this->age.setvar1(message);
+         }
+         void  stud::setMedie(char *message)  
+         {
+         
+          this->medie.setmedie1(message);
+         }
+         void stud::setData() 
+         {
+          
+          this->date.setdata1();
+        
+         }
+       
+    
+	int main()
+    {
+         srand(time(0));
+      
+	stud S[100];
+	
+	variable n (rand()%10);
+	
+	 for (int i =0; i<n.getvar(); i++)
+	 {
+	 
+	S[i].setName("Enter student's name: ");
+    cout<<S[i].getName()<<endl;
+    S[i].setAge("Enter student's age: ");
+    cout<<S[i].getAge()<<endl;
+    S[i].setMedie("Enter student's grade point average: ");
+    cout<<S[i].getMedie()<<endl;
+    S[i].setData();
+    cout<<S[i].getZi()<<"."<<S[i].getLuna()<<"."<<S[i].getAni()<<endl;
+}
+   return 0;   
+    }

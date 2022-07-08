@@ -1,0 +1,94 @@
+#include <iomanip>
+    #include <iostream>
+     #include <string>
+    
+    using namespace std;
+  
+   class A1
+   {int a1;
+     public :
+      A1(int a1=NULL):a1(a1){ cout<<" constructor clasa A1"<<endl; }
+       ~A1(){ cout<<" destructor clasa A1"<<endl; }
+      
+   };
+    
+	class A2 : public A1
+   {
+    int a2;
+     public :
+      A2(int a2=NULL):a2(a2){ cout<<" constructor clasa A2"<<endl; }
+	 A2(int a2, int a1):a2(a2), A1(a1){ cout<<" constructor clasa A"<<endl; }
+       ~A2(){ cout<<" destructor clasa A2"<<endl; }
+      
+   };
+  
+    class A : public A2
+   {
+    int a;
+     public :
+      A(int a=NULL):a(a){ cout<<" constructor clasa A"<<endl; }
+ 	  A(int a, int a2, int a1):a(a), A2(a2,a1){ cout<<" constructor clasa A"<<endl; }
+ 
+       ~A(){ cout<<" destructor clasa A"<<endl; }
+       
+   };
+   
+    class B : public A
+ { 
+ int b;
+  public :
+      B(int b=NULL, int a=NULL):b(b),A(a){ cout<<" constructor clasa B"<<endl;   }
+      B(int b, int a, int a2, int a1):b(b),A(a,a2,a1){ cout<<" constructor clasa B"<<endl;   }
+
+       ~B(){ cout<<" destructor clasa B"<<endl; }
+
+  };
+   -----------------------------------------------------------------------------------------------------------------
+
+  class PUNCT
+  {
+    int pct;
+    
+    public:
+      PUNCT(int pct=NULL ):pct(pct){}
+     ~PUNCT(){}
+      
+       int getPUNCT(){ return this->pct; }
+       
+  };
+  
+  class SEGMENT : public PUNCT
+  {
+   int seg;
+   public:
+    SEGMENT(int seg=NULL, int pct =NULL):seg(seg), PUNCT(pct){}
+   ~SEGMENT(){}
+   
+       int getSEGMENT(){ return this->seg; }
+       
+  };
+  
+  class FIGURA : public SEGMENT
+  {
+   string fig;
+   public:
+    FIGURA(string fig="\0", int seg=NULL, int pct =NULL):fig(fig), SEGMENT(seg, pct){}
+   ~FIGURA(){}
+   
+       string getFIGURA(){ return this->fig; }
+       
+  };
+  int main()
+    {   
+     // B -> A -> A2 -> A1
+    
+       cout<<" y "<<endl;
+       B y(1,2,3,4);
+
+      FIGURA S("Patrat", 4, 4);
+      cout<<" Denumire figura :: "<<S.getFIGURA()<<endl;
+      cout<<" Nr. de segmente :: "<<S.getSEGMENT()<<endl;
+      cout<<" Nr. de puncte :: "<<S.getPUNCT()<<endl;
+      
+       return 0;   
+    }

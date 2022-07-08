@@ -1,0 +1,119 @@
+#include <iomanip>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>   
+#include <ctime>
+using namespace std;
+class variable
+{
+int var;
+
+public:
+	//Constructor
+	
+	variable (int var=NULL):var(var){}
+	variable(variable&Obj){this ->var=Obj.var;}
+	 
+	void setvar1(char *);
+	void setvar2();
+	void setvar3(int val);
+	
+const int getvar()const{return var;}
+
+
+
+friend ostream& operator<<(ostream&, variable&);
+friend istream& operator>>(istream&, variable&);
+
+
+variable& operator++()
+{this->var++;
+return *this;
+}
+
+variable& operator++( int y)
+{this->var++;
+return *this;
+}
+
+
+variable& operator+(variable&y)
+{this->var = var+y.var;
+return *this;
+}
+
+int& operator+(int&y)
+{return this ->var+=y;
+}
+
+variable& operator-(variable&y)
+{this->var = var-y.var;
+return *this;
+}
+
+int& operator-(int&y)
+{return this ->var-=y;
+}
+
+variable& operator*(variable&y)
+{this->var = var*y.var;
+return *this;
+}
+
+int& operator*(int&y)
+{return this ->var*=y;
+}
+
+variable& operator/(variable&y)
+{this->var = var/y.var;
+return *this;
+}
+
+int& operator/(int&y)
+{return this ->var/=y;
+}
+
+variable& operator =(variable&y){
+	this->var=y.var;
+	return *this;
+}
+
+variable& operator =(int&y){
+	this->var=y;
+	return *this;
+}
+};
+
+ostream& operator<<(ostream&out, variable&obj){
+	out<<obj.var;
+//	return out;
+}
+
+istream& operator>>(istream&cin, variable &obj){
+	cin>>obj.var;
+}
+int main()
+{srand(time(0));
+variable a,b,c,d,e,R;
+cout<<"enter value for a ";
+cin>>a;
+++a;
+cout<<a<<endl;
+cout<<"enter value for b ";
+cin>>b;
+cout<<"enter value for c ";
+cin>>c;
+cout<<"enter value for d ";
+cin>>d;
+cout<<"enter value for e ";
+cin>>e;
+//R=a*b+c-e+d*a;
+R=a*b;
+R=R+c;
+R=R-e;
+R=R+(d*a);
+cout<<R<<endl;
+b=a;
+cout<<b;
+	return 0;
+}

@@ -1,0 +1,128 @@
+#include <iomanip>
+    #include <iostream>
+  #include <cstring>
+  #include <cstdlib>   
+     #include <ctime>
+    using namespace std;
+
+   class var
+   {     
+         double valueD;
+         int value;        
+         char sir[256];
+        
+		 
+      public:
+ 
+        var(){ 
+		cout<<" CONSTRUCTOR implicit "<<endl; 
+		this->value = NULL; 
+		this->valueD = NULL; 
+		(this)->sir[0]='\0'; }
+        
+		explicit var(int value){ 
+		cout<<" CONSTRUCTOR supraincarcat int "<<endl;
+        this->value = value; 
+        this->valueD = NULL;
+        (this)->sir[0]='\0';}
+       
+	    explicit var(double valueD){ 
+		cout<<" CONSTRUCTOR supraincarcat double "<<endl;
+		this->valueD = valueD;
+        this->value = NULL; 
+        (this)->sir[0]='\0';}  
+       
+	    explicit var(char sir[]){ 
+		cout<<" CONSTRUCTOR supraincarcat char[] "<<endl; 
+        strcpy(this->sir,sir); 
+        this->value = NULL; 
+        this->valueD = NULL; }
+		
+		explicit var(int value, double valueD){ 
+		cout<<" CONSTRUCTOR supraincarcat int, double "<<endl;
+        this->value = value; 
+        this->valueD = valueD;
+        (this)->sir[0]='\0';}
+		
+		explicit var(double valueD, char sir[]){ 
+		cout<<" CONSTRUCTOR supraincarcat double, sir "<<endl;
+        this->value = NULL; 
+        this->valueD = valueD;
+        strcpy(this->sir,sir);}
+		
+		explicit var(int value, char sir[]){ 
+		cout<<" CONSTRUCTOR supraincarcat int, char "<<endl;
+        this->value = value; 
+        this->valueD = NULL;
+        strcpy(this->sir,sir);}
+		
+		explicit var(double valueD, int value){ 
+		cout<<" CONSTRUCTOR supraincarcat double, int "<<endl;
+        this->value = value; 
+        this->valueD = valueD;
+        (this)->sir[0]='\0';}
+		
+		explicit var( char sir[],double valueD){ 
+		cout<<" CONSTRUCTOR supraincarcat sir, double "<<endl;
+        this->value = NULL; 
+        this->valueD = valueD;
+        strcpy(this->sir,sir);}
+		
+		explicit var( char sir[],int value){ 
+		cout<<" CONSTRUCTOR supraincarcat char, int "<<endl;
+        this->value = value; 
+        this->valueD = NULL;
+        strcpy(this->sir,sir);}
+		
+		 
+         var(var&Obj){ 
+		 cout<<" CONSTRUCTOR copiere "<<endl; 
+		 this->value = Obj.value;  }
+       
+	   
+        const int getVALUE()const{ return this->value; }
+        const double getVALUED()const{ return this->valueD; }
+        char* getSIR(){  return this->sir; }
+};
+        
+   
+    int main()
+    {
+         srand(time(0));
+        
+		
+	var Q1(123,10.777), Q2(777.777,"asdfadsf"), Q3("dhdhdh",456), 
+            Q4(777,"asdfadsf"), Q5(564.42,563), Q6("jhdjs",35.6);
+		
+		 
+         var X(777), Z(X), Y(2.65), B(Y);
+         var W0(123), W1(10.10), W2("asdf");
+	
+	
+          cout<<" int W0="<<W0.getVALUE()<<endl;
+          cout<<" double W0="<<W0.getVALUED()<<endl;
+          cout<<" char W0="<<W0.getSIR()<<endl;
+         
+		  cout<<" int W1="<<W1.getVALUE()<<endl;
+          cout<<" double W1="<<W1.getVALUED()<<endl;
+          cout<<" char W1="<<W1.getSIR()<<endl;
+          
+		  cout<<" int W2="<<W2.getVALUE()<<endl;
+          cout<<" double W2="<<W2.getVALUED()<<endl;
+          cout<<" char W2="<<W2.getSIR()<<endl;
+        
+		  cout<<" int X="<<X.getVALUE()<<endl;
+          cout<<" char Y="<<Y.getSIR()<<endl;
+         
+		  cout<<" Y="<<Y.getVALUED()<<endl;
+          cout<<" Z="<<Z.getVALUE()<<endl;
+          cout<<" B="<<B.getVALUED()<<endl;
+          
+          cout <<"Q1="<<Q1.getVALUE()<<" "<<Q1.getVALUED()<<endl;
+          cout <<"Q2="<<Q2.getVALUED()<<" "<<Q2.getSIR()<<endl;
+          cout <<"Q3="<<Q3.getSIR()<<" "<<Q3.getVALUE()<<endl;
+          cout <<"Q4="<<Q4.getVALUE()<<" "<<Q4.getSIR()<<endl;
+          cout <<"Q5="<<Q5.getVALUED()<<" "<<Q5.getVALUE()<<endl;
+          cout <<"Q6="<<Q6.getSIR()<<" "<<Q6.getVALUED()<<endl;
+    return 0;   
+    }

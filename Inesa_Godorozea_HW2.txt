@@ -1,0 +1,64 @@
+#include <iomanip>
+    #include <iostream>
+  #include <cstdlib>   
+     #include <ctime>  
+    using namespace std;
+    
+	 int insertINT(char *mess) 
+      {
+       int x;
+        cout<<mess;
+        cin>>x;
+        return x;
+   } 
+      
+   class var
+   {            
+        int value; 
+      public:
+         void setVALUE1(); 
+         void setVALUE2();  
+         void setVALUE3(int VALUE);  
+     const int getVALUE()const{ return value; }
+   };
+   
+   void var::setVALUE1() 
+         {
+          cout<<" Enter value = ";
+          cin>>value;
+          
+         }
+         void  var::setVALUE2()  
+         {
+           value = rand()%100;
+          
+         }
+         void  var::setVALUE3(int VALUE)  
+         {
+           value = VALUE;
+          
+         }
+   
+   
+   
+    int main()
+    {
+    
+	int n=insertINT("Enter n=");	
+    	
+  for (int i=0; i<n; i++) 
+  {
+
+   var a,b,c;
+   a.setVALUE2();
+   cout<<"a["<<i+1<<"]= "<<a.getVALUE()<<endl;
+   b.setVALUE2();
+   cout<<"b["<<i+1<<"]= "<<b.getVALUE()<<endl;
+   c.setVALUE2();
+   cout<<"c["<<i+1<<"]= "<<c.getVALUE()<<endl;
+   cout<<" a+b-c="<<a.getVALUE()+b.getVALUE()-c.getVALUE()<<endl;
+   var R;
+   R.setVALUE3(a.getVALUE()+b.getVALUE()-c.getVALUE());
+   cout<<" R="<<R.getVALUE()<<endl;  }
+    return 0;   
+    }

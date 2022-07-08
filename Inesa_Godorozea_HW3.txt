@@ -1,0 +1,96 @@
+#include <iomanip>
+    #include <iostream>
+  #include <cstdlib>   
+     #include <ctime>  
+    using namespace std;
+    //a*(b+c-d)-e
+
+   class var
+   {            
+        int value; 
+      public:
+         void setVALUE1(char*); 
+         void setVALUE2();  
+         void setVALUE3(int);  
+     const int getVALUE()const{ return this->value; }
+   
+         void summ(int x){value +=x;}
+         bool paritate(){return value%2==0?true:false;}
+         bool interval (int x, int y){return value>=x&& value<y?true:false;}
+         void max (int x){if (x>value) value=x; }
+         void min (int x){if (x<value) value=x; }
+   };
+   
+   void var::setVALUE1(char *message) 
+         {
+          cout<<message;
+          cin>>this->value;
+          
+         }
+         void  var::setVALUE2()  
+         {
+           this->value = rand()%100;
+          
+         }
+         void  var::setVALUE3(int VALUE)  
+         {
+           this->value = VALUE;
+          
+         }
+   
+   
+   
+    int main()
+    {srand(time(0));
+      var a,b,c,d,e,n,R[100],SRii,Ca,Cb,Cc, Rmaxp, Rminp, Rmaxi, Rmini;
+      
+	n.setVALUE1("Enter value for n =");	
+    SRii.setVALUE3(0);
+    Ca.setVALUE3(0);
+    Cb.setVALUE3(0);
+    Cc.setVALUE3(0);
+    Rmaxp.setVALUE3(INT_MIN);
+    Rminp.setVALUE3(INT_MAX);
+    Rmaxi.setVALUE3(INT_MIN);
+    Rmini.setVALUE3(INT_MAX);
+ 
+  for (int i=0; i<n.getVALUE(); i++) 
+  {
+
+   a.setVALUE2();
+   cout<<"a["<<i+1<<"]= "<<a.getVALUE()<<endl;
+   b.setVALUE2();
+   cout<<"b["<<i+1<<"]= "<<b.getVALUE()<<endl;
+   c.setVALUE2();
+   cout<<"c["<<i+1<<"]= "<<c.getVALUE()<<endl;
+   d.setVALUE2();
+   cout<<"d["<<i+1<<"]= "<<d.getVALUE()<<endl;
+   e.setVALUE2();
+   cout<<"e["<<i+1<<"]= "<<e.getVALUE()<<endl;
+   
+   cout<<" a*(b+c-d)-e="<<a.getVALUE()*(b.getVALUE()+c.getVALUE()-d.getVALUE())-e.getVALUE()<<endl;
+  
+   R[i].setVALUE3(a.getVALUE()*(b.getVALUE()+c.getVALUE()-d.getVALUE())-e.getVALUE());
+   cout<<" R="<<R[i].getVALUE()<<endl; 
+   if(i%2!=0) SRii.summ(R[i].getVALUE());
+   if(a.paritate()&& (a.interval(10,20)|| a.interval(30,40)|| a.interval(60,80))) Ca.summ(1);
+   if(!b.paritate()&& (b.interval(1,20)|| b.interval(31,99))) Cb.summ(1);
+   if(c.paritate()&& (c.interval(-10,0)|| c.interval(3,45)|| c.interval(50,101))) Cc.summ(1);
+  
+   if (R[i].paritate())Rmaxp.max(R[i].getVALUE());
+   else Rmaxi.max(R[i].getVALUE());
+   
+   if (R[i].paritate())Rminp.min(R[i].getVALUE());
+   else Rmini.min(R[i].getVALUE());
+
+	}
+    cout<<"Suma raspunsurilor iteratiilor impare="<<SRii.getVALUE()<<endl;
+    cout<<"Ca="<<Ca.getVALUE()<<endl;
+    cout<<"Cb="<<Cb.getVALUE()<<endl;
+    cout<<"Cc="<<Cb.getVALUE()<<endl;
+    cout<<"Rmaxp="<<Rmaxp.getVALUE()<<endl;
+    cout<<"Rmaxi="<<Rmaxi.getVALUE()<<endl;
+    cout<<"Rminp="<<Rminp.getVALUE()<<endl;
+    cout<<"Rmini="<<Rmini.getVALUE()<<endl;
+    return 0;   
+    }

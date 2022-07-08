@@ -1,0 +1,61 @@
+#include <iomanip>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>   
+#include <ctime>
+using namespace std;
+
+
+class sir{
+	char SIR[20];	
+
+public:
+	//Constructor
+	
+	sir (char SIR[]="\0"){strcpy(this->SIR,SIR);}
+	
+	sir (char SIR[], int inc, int nrval)
+	{int i;
+	for (i=0; i<nrval; i++,inc++)
+	{this->SIR[i]=SIR[inc];
+
+	}this->SIR[i]=0;
+	}
+	
+	sir (int var, char x){int i;
+	for (i=0; i<var; i++)
+	{this->SIR[i]=x;
+	}this->SIR[i]=0;
+	}
+	sir(sir&Obj){strcpy(this->SIR,Obj.SIR);}
+	 
+	~sir(){}
+
+    
+     
+	friend ostream& operator<<(ostream&, sir&);
+   	friend istream& operator>>(istream&, sir&);
+   	
+
+	};
+
+ostream& operator<<(ostream&out, sir&obj){
+	out<<obj.SIR;
+//	return out;
+}
+
+istream& operator>>(istream&cin, sir&obj){
+	cin>>obj.SIR;
+}
+
+
+
+int main()
+{srand(time(0));
+sir a(20,'*');
+cout<<"a="<<a<<endl;
+sir z("string itSTEP 2022",7,9);
+cout<<"z="<<z<<endl;
+
+return 0;
+}

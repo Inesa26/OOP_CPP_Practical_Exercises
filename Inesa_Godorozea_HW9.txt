@@ -1,0 +1,73 @@
+#include <iomanip>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>   
+#include <ctime>
+using namespace std;
+class variable
+{
+int var;
+
+public:
+	//Constructor
+	variable (int var=NULL):var(var){}
+	variable(variable&Obj){this ->var=Obj.var;}
+	 
+	void setvar1(char *);
+	void setvar2();
+	void setvar3(int val);
+	
+const int getvar()const{return var;}
+
+friend ostream& operator<<(ostream&, variable&);
+friend istream& operator>>(istream&, variable&);
+friend variable& operator+(variable&, variable&);
+friend variable& operator-(variable&, variable&);
+friend variable& operator*(variable&, variable&);
+};
+
+variable& operator+(variable&x, variable&y)
+{variable z ( x.var+y.var);
+return  z;
+}
+
+variable& operator-(variable&x, variable&y)
+{variable w ( x.var-y.var);
+return  w;
+}
+
+variable& operator*(variable&x, variable&y)
+{variable v ( x.var*y.var);
+return  v;
+}
+
+ostream& operator<<(ostream&out, variable&obj){
+	out<<obj.var;
+//	return out;
+}
+
+istream& operator>>(istream&cin, variable &obj){
+	cin>>obj.var;
+}
+int main()
+{srand(time(0));
+variable a,b,c,d,e,R;
+cout<<"enter value for a ";
+cin>>a;
+cout<<"enter value for b ";
+cin>>b;
+cout<<"enter value for c ";
+cin>>c;
+cout<<"enter value for d ";
+cin>>d;
+cout<<"enter value for e ";
+cin>>e;
+//R=a*b+c-e+d*a;
+R=a*b;
+R=R+c;
+R=R-e;
+R=R+(d*a);
+cout<<R<<endl;
+
+	return 0;
+}

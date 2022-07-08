@@ -1,0 +1,81 @@
+#include <iomanip>
+#include <string>
+#include <iostream>
+
+using namespace std;
+
+class CAROSERIE 
+{ 
+protected:
+string caroserie;
+int locuri;
+string culoare;
+
+public:
+CAROSERIE(string caroserie = "\0",  string culoare = "\0", int locuri=0):caroserie(caroserie), culoare(culoare), locuri (locuri){}
+~CAROSERIE (){}
+
+string getCaroserie(){return this->caroserie;}
+int getLocuri(){return this->locuri;}
+string getCuloare(){return this->culoare;}
+};
+
+class TRANSMISIE
+{
+
+string transmisie;
+
+public:
+TRANSMISIE(string transmisie = "\0"):transmisie(transmisie){}
+~TRANSMISIE(){}
+
+string getTransmisie(){return this->transmisie;}
+};
+
+class MOTOR: public TRANSMISIE
+{ 
+
+string combustibil;
+int cilindri;
+
+public:
+MOTOR(string combustibil = "\0", int cilindri=0, string transmisie=0):combustibil(combustibil), cilindri (cilindri), TRANSMISIE(transmisie){}
+~MOTOR (){}
+
+string getCombustibil(){return this->combustibil;}
+int getCilindri(){return this->cilindri;}
+};
+
+class AUTO:public MOTOR, public CAROSERIE
+{
+string producator;
+string model;
+
+public:
+AUTO(string producator = "\0", string model="\0",string combustibil = "\0", int cilindri=0, string transmisie = "\0",
+string caroserie = "\0", int locuri=0, string culoare = "\0" ):
+producator(producator), model(model), MOTOR(combustibil,cilindri, transmisie), CAROSERIE(caroserie, culoare){
+
+this->locuri=locuri;
+}
+
+~AUTO (){}
+string getProducator(){return this->producator;}
+string getModel(){return this->model;}
+};
+
+int main()
+{
+AUTO A("Toyota", "Camri", "Benzina", 5, "Automata", "Sedan", 5, "Rosu");
+cout<<"producator: "<<A.getProducator()<<endl;
+cout<<"model: "<<A.getModel()<<endl;
+cout<<"combustibil: "<<A.getCombustibil()<<endl;
+cout<<"cilindri: "<<A.getCilindri()<<endl;
+cout<<"transmisie: "<<A.getTransmisie()<<endl;
+cout<<"caroserie: "<<A.getCaroserie()<<endl;
+cout<<"locuri: "<<A.getLocuri()<<endl;
+cout<<"culoare: "<<A.getCuloare()<<endl;
+return 0;
+}
+
+

@@ -1,0 +1,74 @@
+#include <iomanip>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>   
+#include <ctime>
+using namespace std;
+class variable
+{
+int var;
+
+public:
+	//Constructor
+	
+	variable (int var=NULL):var(var){}
+	variable(variable&Obj){this ->var=Obj.var;}
+	 
+	void setvar1(char *);
+	void setvar2();
+	void setvar3(int val);
+	
+const int getvar()const{return var;}
+
+friend void abc(const variable&a, const variable&b, const variable&c, const variable&R);
+friend void show(const variable&);	
+friend ostream& operator<<(ostream&, variable&);
+friend istream& operator>>(istream&, variable&);
+};
+
+void show(const variable&X)	
+{cout<< "random value for b= "<<X.var<<endl;
+	
+}
+
+void abc(const variable&a, const variable&b, const variable&c, const variable&R)	
+{cout<< "a+b-c "<<a.var+b.var-c.var<<endl;
+	
+}
+ostream& operator<<(ostream&out, variable&obj){
+	out<<"value= "<<obj.var;
+//	return out;
+}
+
+istream& operator>>(istream&cin, variable &obj){
+	cin>>obj.var;
+}
+    void variable:: setvar1(char*message)
+	{cout<<message;
+	cin>>var;
+	}
+	
+	void variable:: setvar2()
+	{
+	var= rand()%100;
+	//cout<<var<<endl;
+	}
+	void variable:: setvar3(int val)
+	{this->var=val;
+	//cout<<var<<endl;
+	}
+
+int main()
+{srand(time(0));
+variable a,b,c(13),R;
+
+cout<<"enter value for a ";
+cin>>a;
+cout<<a<<endl;
+b.setvar2();
+show(b);
+cout<<"value for c is "<<c.getvar()<<endl;
+abc(a,b,c,R);
+
+	return 0;
+}

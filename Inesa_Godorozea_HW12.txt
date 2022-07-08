@@ -1,0 +1,244 @@
+#include <iomanip>
+#include <iostream>
+#include <cstring>
+#include <cstdlib>   
+#include <ctime>
+using namespace std;
+
+
+class sir{
+	char SIR[20];	
+
+public:
+	//Constructor
+	
+	sir (char SIR[]="\0"){strcpy(this->SIR,SIR);}
+	sir(sir&Obj){strcpy(this->SIR,Obj.SIR);}
+	 
+	~sir(){}
+
+     const char* getSIR()const{return this->SIR;}
+     
+	friend ostream& operator<<(ostream&, sir&);
+   	friend istream& operator>>(istream&, sir&);
+   	
+//STRLEN   	
+int operator+=(char *SIR)
+{int i=0;
+while (SIR[i]!=0)
+i++;
+return i;
+}
+
+int operator!()
+{int i=0;
+while (this->SIR[i]!=0)
+i++;
+return i;
+}
+
+//STRCPY
+sir& operator==(sir&obj)
+{int i=0;
+while(obj.SIR[i]!=0){this->SIR[i]=obj.SIR[i];
+i++;
+}
+this->SIR[i]=0;
+return *this;
+}
+
+sir& operator==(char *SIR)
+{int i=0;
+while(SIR[i]!=0){this->SIR[i]=SIR[i];
+i++;
+}
+this->SIR[i]=0;
+return *this;
+}
+
+//STRCAT
+
+void operator+(char *SIR)   
+ {int n1,n2;
+  sir x1,x2;
+  x1=this->SIR;
+  x2=SIR;
+  n1 =!x1;
+  n2=!x2;
+ 
+if(n1+n2<20){
+	for(int i=0; i<n2;i++){
+		this->SIR[n1+i]=SIR[i];	
+	}
+this->SIR[n1+n2]=0;	
+}
+else cout<<"Nu e posibila concatinarea";
+}  
+   
+void operator+(sir&obj)   
+ {int n1,n2;
+  sir x1,x2;
+  x1=this->SIR;
+  x2=obj;
+  n1=!x1;
+  n2=!x2;
+ 
+if(n1+n2<20){
+	for(int i=0; i<n2;i++){
+		this->SIR[n1+i]=SIR[i];	
+	}
+this->SIR[n1+n2]=0;	
+}
+else cout<<"Nu e posibila concatinarea";
+} 
+
+  //STRCMP 
+  
+bool operator[](char *SIR)
+{int n1,n2;
+  sir x1,x2;
+  x1=this->SIR;
+  x2=SIR;
+  n1 =!x1;
+  n2=!x2;
+ 
+if(n1==n2){
+	for(int i=0; i<n1;i++)
+		if(this->SIR[i]	!= SIR[i]) return 0;
+	return 1;
+}
+else 
+cout<<"Siruri de diferite dimensiuni"<<endl;return 0;
+
+}
+
+bool operator[](sir&obj)
+{int n1,n2;
+  sir x1,x2;
+  x1=this->SIR;
+  x2=obj;
+  n1=!x1;
+  n2=!x2;
+ 
+if(n1==n2){
+	for(int i=0; i<n1;i++)
+		if(this->SIR[i]	!= SIR[i]) return 0;
+	return 1;
+}
+else 
+cout<<"Siruri de diferite dimensiuni"<<endl;return 0;
+
+}
+
+  //STRCHR
+  bool operator () (char x)
+{int n1;
+ sir x1;
+ x1=this-> SIR;
+ n1=!x1;
+	for(int i=0; i<n1;i++)
+		if(this->SIR[i]	== x) return 1;
+	return 1;
+}
+
+ //STRSTR
+ 
+bool operator > (char *SIR)
+{int n1,n2;
+  sir x1,x2;
+  x1=this->SIR;
+  x2=SIR;
+  n1 =!x1;
+  n2=!x2;
+ 
+if(n1>=n2){
+	int i=0, j=0;
+		while (this->SIR[i]!=0)
+		{
+		if(this->SIR[i]==SIR[j])
+		  {if(j==n2-1)return 1; j++;
+	     	}
+        else {if(j>0)i--; j=0;
+		   }
+	     	i++;}
+}
+else 
+cout<<"Sirul n2 mai lung decat sirul n1"<<endl;return 0;
+
+}
+
+bool operator > (sir&obj)
+{int n1,n2;
+  sir x1,x2;
+  x1=this->SIR;
+  x2=obj;
+  n1=!x1;
+  n2=!x2;
+ 
+if(n1>=n2){
+	int i=0, j=0;
+		while (this->SIR[i]!=0)
+		{
+		if(this->SIR[i]==SIR[j])
+		  {if(j==n2-1)return 1; j++;
+	     	}
+        else {if(j>0)i--; j=0;
+		   }
+	     	i++;}
+}
+else 
+cout<<"Sirul n2 mai lung decat sirul n1"<<endl;return 0;
+
+}
+   	
+	};
+
+ostream& operator<<(ostream&out, sir&obj){
+	out<<obj.SIR;
+//	return out;
+}
+
+istream& operator>>(istream&cin, sir&obj){
+	cin>>obj.SIR;
+}
+
+
+
+int main()
+{srand(time(0));
+sir b;
+cout<<"enter value for b ";
+cin>>b;
+cout<<"b="<<b<<endl;
+sir c;
+c==b;
+cout<<"c="<<c<<endl;
+if(c[b])cout<<"TRUE"<<endl;
+else cout<<"FALSE"<<endl;
+sir d;
+d=="ghfhfh";
+cout<<"d="<<d<<endl;
+sir k;
+int l= k+="dsjka";
+cout<<"l="<<l<<endl;
+l=!b;
+cout<<l;
+cout<<"lungimea lui b="<<l<<endl;
+b+"hgvgfc";
+cout<<"b concatinat ="<<b<<endl;
+b+c;
+cout<<"b concatinatcu c ="<<b<<endl;
+
+if(b["bdh"])cout<<"TRUE"<<endl;
+else cout<<"FALSE"<<endl;
+
+if(b('n'))cout<<"TRUE"<<endl;
+else cout<<"FALSE"<<endl;
+
+if(b>"hghgffg")cout<<"TRUE"<<endl;
+else cout<<"FALSE"<<endl;
+
+if(b>c)cout<<"TRUE"<<endl;
+else cout<<"FALSE"<<endl;
+return 0;
+}

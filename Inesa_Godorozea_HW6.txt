@@ -1,0 +1,77 @@
+#include <iomanip>
+    #include <iostream>
+  #include <cstring>
+  #include <cstdlib>   
+     #include <ctime>
+    using namespace std;
+    
+    class stud
+   {     
+        char   name[20];
+ 		int    age;
+ 		char   group[20];
+ 	 
+        
+      public:
+      	stud(int age):age(age){
+      		this->name[0]='\0';
+      		this->group[0]='\0';
+		  }
+
+        stud(char group[]):age(NULL){
+      		this->name[0]='\0';
+      		strcpy(this->group,group);
+		  }
+      	
+      	stud(char name[]="\0", int age =NULL, char group[]="\0"):age(age){
+      		strcpy(this->name,name);
+      		strcpy(this->group,group);
+		  }
+     inline  void setName(char*);
+     inline  void setAge(char*);   
+     inline  void setGroup(char*);  
+     const char* getName()const{ return this->name; }
+     const int getAge()const{ return this->age; }
+     const char* getGroup(){  return this->group; }
+};
+     
+       
+         void  stud::setName(char *message)  
+         {
+           cout<<message;
+           cin>>this->name;
+         }
+         void stud::setAge(char *message) 
+         {
+          cout << message;
+          cin>>this->age;
+         }
+         void stud::setGroup(char *message) 
+         {
+          cout << message;
+         cin>>this->group;
+         }
+    
+	int main()
+    {
+         srand(time(0));
+        
+	stud S[100];
+	int n =rand()%10;
+	
+	 for (int i =0; i<n; i++)
+	 {
+	 
+	S[i].setName("Enter student's name: ");
+    cout<<S[i].getName()<<endl;
+    S[i].setAge("Enter student's age: ");
+    cout<<S[i].getAge()<<endl;
+    S[i].setGroup("Enter student's Group: ");
+    cout<<S[i].getGroup()<<endl;
+}
+    
+
+	
+		  
+    return 0;   
+    }

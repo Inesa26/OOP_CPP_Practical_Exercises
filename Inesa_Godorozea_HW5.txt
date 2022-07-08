@@ -1,0 +1,51 @@
+#include <iomanip>
+    #include <iostream>
+  #include <cstring>
+  #include <cstdlib>   
+     #include <ctime>
+    using namespace std;
+
+   class var
+   {     
+        
+         int value;        
+		 
+      public:
+ 
+      
+       
+	 var(int value=NULL) : value(value) {}
+        
+         void   setVALUE3(int value)  
+         {
+           this->value = value;
+         } 
+        const int getVALUE()const{ return this->value; }
+    
+        
+};
+        
+   
+    int main()
+    {
+         srand(time(0));
+        
+		 var n;
+		 var V[100];
+		 var M[100][100];
+	
+	      n=var(rand()%10);
+          cout<<" n="<<n.getVALUE()<<endl;
+          for (int i=0; i<n.getVALUE(); i++){
+		  V[i]=var(rand()%10);
+          cout<<"V["<<i<<"]= "<<V[i].getVALUE()<<endl;
+     }
+         for (int i=0; i<n.getVALUE(); i++){
+         for	(int i=0; i<n.getVALUE(); i++){
+			 
+		  M[i][i]=var(rand()%10);
+          cout<<setw(3)<<M[i][i].getVALUE();
+     }cout<<endl;}
+		  
+    return 0;   
+    }
